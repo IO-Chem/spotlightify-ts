@@ -1,0 +1,33 @@
+services:
+  # Node.js TS React front-end
+  ## For user interaction with Spotify API data calls
+  client:
+    tty: true
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    networks:
+      - server-client
+    volumes:
+      - ./client/app:/app
+    ports:
+      - "3000:3000"
+    #command: ["npm", "start"]
+
+  # Node.js TS Express back-end
+  ## For API authentication tokens from private API key
+  server:
+    tty: true
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    networks:
+      - server-client
+    volumes:
+      - ./server/app:/app
+    ports:
+      - "5000:5000"
+    #command: ["npm", "run", "dev"]
+
+networks:
+  server-client:
