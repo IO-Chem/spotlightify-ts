@@ -24,10 +24,11 @@ services:
     networks:
       - server-client
     volumes:
-      - ./server/app:/app
+      - ./server/app/src:/app/src
+      - ./server/app/nodemon.json:/app/nodemon.json
     ports:
       - "5000:5000"
-    #command: ["npm", "run", "dev"]
+    command: ["npm", "run", "dev"]
 
 networks:
   server-client:
