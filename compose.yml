@@ -12,7 +12,7 @@ services:
       - ./client/app:/app
     ports:
       - "3000:3000"
-    #command: ["npm", "start"]
+    command: ["npm", "start"]
 
   # Node.js TS Express back-end
   ## For API authentication tokens from private API key
